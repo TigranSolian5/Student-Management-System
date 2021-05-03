@@ -8,14 +8,14 @@ public class Student {
     private final String name;
     private final String surname;
     private String studentID;
-    private double GPA;
+    private int GPA;
     private int year;
     private int semester;
     private Department department;
     private Set<Course> currentCourses;
     private Set<Course> previousCourses;
 
-    public Student(String name, String surname, String studentID, double GPA, int year, int semester, Department department) {
+    public Student(String name, String surname, String studentID, int GPA, int year, int semester, Department department) {
         this.name = name;
         this.surname = surname;
         this.studentID = studentID;
@@ -41,11 +41,11 @@ public class Student {
         this.studentID = studentID;
     }
 
-    public double getGPA() {
+    public int getGPA() {
         return GPA;
     }
 
-    public void setGPA(double GPA) {
+    public void setGPA(int GPA) {
         this.GPA = GPA;
     }
 
@@ -71,5 +71,18 @@ public class Student {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Set<Course> getCurrentCourses() {
+        return currentCourses;
+    }
+
+    public Set<Course> getPreviousCourses() {
+        return previousCourses;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + surname + " from " + department.getName() + "\t Student ID: " + studentID;
     }
 }

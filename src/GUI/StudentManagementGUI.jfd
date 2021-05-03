@@ -1,0 +1,59 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :::p, comp panel1:::p::p, space ::540:x}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp panel1:::::x, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "Main"
+			"visible": true
+			"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Panel.background" )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq t {space :0:0:x, comp button1:::p:250:p, space s:::p, comp button2:::p:250:p}, comp scrollPane1::l:::x, comp label1::l:::x}, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :p::p, comp label1:::p:24:p, space :p::p, comp scrollPane1:::p:504:p, space u:p::p, par l {comp button1::::54:x, comp button2::::54:x}, space :p::p}}"
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 51, 51, 51, 255 )
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"foreground": #SwingColor0
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					"background": new java.awt.Color( 102, 102, 102, 255 )
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
+						auxiliary() {
+							"JavaCodeGenerator.customCreateCode": "new JList<>(demoList);"
+							"JavaCodeGenerator.preCreateCode": "DefaultListModel<Student> demoList = new DefaultListModel<>();\nStudentService studentService = new StudentService();\nstudentService.getAllStudents().forEach(demoList::addElement);"
+							"JavaCodeGenerator.typeParameters": "Student"
+						}
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Create Student"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createStudentHandler", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "Delete Student"
+					"foreground": new com.jformdesigner.model.SwingColor( "Button.foreground" )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deleteStudentHandler", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Students"
+					"horizontalAlignment": 0
+					"background": new com.jformdesigner.model.SwingColor( "Label.background" )
+					"foreground": new java.awt.Color( 204, 204, 204, 255 )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1080, 650 )
+		} )
+	}
+}
