@@ -1,7 +1,7 @@
 package course;
-
+import java.util.Random;
 public class CourseDao {
-    import java.util.Random;
+
     public class CourseDao {
         public static Course createCourse(String courseName,
                                           int startDate,
