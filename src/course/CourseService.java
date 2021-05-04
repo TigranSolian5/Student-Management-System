@@ -2,9 +2,6 @@ package course;
 import java.util.List;
 
 
-public class CourseService {
-
-
     public class CourseService implements CourseServiceI {
         @Override
         public Course createCourse(String courseName, int courseId, int startDate, int endDate,String schedualType , String college,int courseCredits, String courseLength,String room,int capacity) {
