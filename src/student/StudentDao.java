@@ -31,10 +31,31 @@ public class StudentDao {
                                         int year,
                                         int semester,
                                         Department department) {
+        if (!isUnique(studentId)) {
+            studentId = generateStudentId();
+            while (!isUnique(studentId)) {
+                studentId = generateStudentId();
+            }
+        }
         Student s = new Student(name, surname, studentId, GPA, year, semester, department);
-        writeStudent(s);
 
+        writeStudent(s);
         return s;
+    }
+
+    private static boolean isUnique(String studentId) {
+        File[] students = new File(Paths.get("src", "students").toString()).listFiles();
+        if (students == null)
+            return true;
+
+        for (File student : students) {
+            if (student.isFile()) {
+                if (student.getName().equals(studentId + ".txt")) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static List<Student> readAllStudents() {
@@ -87,14 +108,9 @@ public class StudentDao {
 
     public static void addStudentToCourseArray(String[] studentIds, Course course) {
         List<Student> students = getStudentsFromIds(studentIds);
-        StringJoiner sj = new StringJoiner(",");
 
         students.forEach(student -> {
             student.getCurrentCourses().add(course);
-
-//            String record = readStudent(student.getStudentID());
-//            String[] split = record.split("\\|");
-//            sj.add(split[split.length - 1]).add(course.getCourseName());
 
             writeStudent(student);
         });
@@ -141,15 +157,17 @@ public class StudentDao {
 
     private static Student parseString(String studentString) {
         String[] split = studentString.split("\\|");
-        String currentCoursesString = split[7];
-        String[] courseNames = currentCoursesString.split(",");
-
-        List<Course> coursesByNames = CourseDao.getCoursesByNames(courseNames);
-        Set<Course> courses = new HashSet<>(coursesByNames);
-
         Student student = new Student(split[0], split[1], split[2], Integer.parseInt(split[3]), Integer.parseInt(split[4]),
                 Integer.parseInt(split[5]), Department.valueOf(split[6]));
-        student.setCurrentCourses(courses);
+
+        if (split.length > 7) {
+            String currentCoursesString = split[7];
+            String[] courseNames = currentCoursesString.split(",");
+
+            List<Course> coursesByNames = CourseDao.getCoursesByNames(courseNames);
+            Set<Course> courses = new HashSet<>(coursesByNames);
+            student.setCurrentCourses(courses);
+        }
 
         return student;
     }
