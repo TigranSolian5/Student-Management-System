@@ -1,6 +1,8 @@
 package student;
 
-import java.util.List;
+import course.Course;
+
+import javax.swing.*;
 
 public interface StudentServiceI {
     Student createStudent(String name,
@@ -11,6 +13,9 @@ public interface StudentServiceI {
                           int semester,
                           Department department);
     Student addStudent(String name, String surname, Department department);
-    List<Student> getAllStudents();
+    DefaultListModel<Student> getAllStudents();
     void deleteStudent(Student student);
+    void enrollInCourse(String studentId, Course course);
+    void enrollInCourseArray(String[] studentIds, Course course);
+    void finishCourse(Student student, Course course);
 }

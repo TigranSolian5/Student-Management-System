@@ -4,6 +4,7 @@
 
 package GUI;
 
+import javax.swing.event.*;
 import student.Department;
 import student.Student;
 import student.StudentService;
@@ -43,6 +44,14 @@ public class CreateStudentFrameGUI extends JFrame {
         }
     }
 
+    private void showMoreHandler(ChangeEvent e) {
+        // TODO add your code here
+    }
+
+    private void createCourseHandler(MouseEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -63,6 +72,15 @@ public class CreateStudentFrameGUI extends JFrame {
         radioButton5.setActionCommand("BAB");
         button1 = new JButton();
         button2 = new JButton();
+        checkBox1 = new JCheckBox();
+        label4 = new JLabel();
+        textField3 = new JTextField();
+        label5 = new JLabel();
+        textField4 = new JTextField();
+        textField6 = new JTextField();
+        textField5 = new JTextField();
+        label6 = new JLabel();
+        label7 = new JLabel();
         buttonGroup1 = new ButtonGroup();
 
         //======== this ========
@@ -111,8 +129,25 @@ public class CreateStudentFrameGUI extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 createStudent(e);
+                createCourseHandler(e);
             }
         });
+
+        //---- checkBox1 ----
+        checkBox1.setText("Show More");
+        checkBox1.addChangeListener(e -> showMoreHandler(e));
+
+        //---- label4 ----
+        label4.setText("GPA: ");
+
+        //---- label5 ----
+        label5.setText("Year: ");
+
+        //---- label6 ----
+        label6.setText("Semester: ");
+
+        //---- label7 ----
+        label7.setText("Student ID: ");
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -122,14 +157,11 @@ public class CreateStudentFrameGUI extends JFrame {
                     .addContainerGap()
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(label1)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26))
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(label3)
                             .addGap(18, 18, 18)
@@ -139,13 +171,38 @@ public class CreateStudentFrameGUI extends JFrame {
                                 .addComponent(radioButton4)
                                 .addComponent(radioButton5)
                                 .addComponent(radioButton1))
-                            .addContainerGap(288, Short.MAX_VALUE))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(label1)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(label2, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26))
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(0, 306, Short.MAX_VALUE)
-                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())))
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(checkBox1)
+                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                                        .addComponent(label5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(textField4))
+                                    .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addComponent(label6)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(textField5, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(label7)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(textField6, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 379, Short.MAX_VALUE))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -171,7 +228,29 @@ public class CreateStudentFrameGUI extends JFrame {
                     .addComponent(radioButton4)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(radioButton5)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label5)
+                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(7, 7, 7)
+                            .addComponent(label6))
+                        .addComponent(textField5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(7, 7, 7)
+                            .addComponent(label7))
+                        .addComponent(textField6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                    .addComponent(checkBox1)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(button2)
                         .addComponent(button1))
@@ -203,6 +282,15 @@ public class CreateStudentFrameGUI extends JFrame {
     private JRadioButton radioButton5;
     private JButton button1;
     private JButton button2;
+    private JCheckBox checkBox1;
+    private JLabel label4;
+    private JTextField textField3;
+    private JLabel label5;
+    private JTextField textField4;
+    private JTextField textField6;
+    private JTextField textField5;
+    private JLabel label6;
+    private JLabel label7;
     private ButtonGroup buttonGroup1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

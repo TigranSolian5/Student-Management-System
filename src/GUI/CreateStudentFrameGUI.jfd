@@ -12,8 +12,8 @@ new FormModel {
 			"location": new java.awt.Point( 0, 606 )
 		} )
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp label1:::p::p, space :::p, comp textField1::::186:x, space :::p, comp label2:::::x, space :::p, comp textField2:::p:193:p, space :p:26:p}, seq l {comp label3:::p::p, space s:::p, par l {comp radioButton2:::p::p, comp radioButton3::l:p::p, comp radioButton4::l:p::p, comp radioButton5::l:p::p, comp radioButton1::l:p::p}, space ::288:x}, seq {space :0:306:x, comp button1:::p:114:p, space u:::p, comp button2:::p:114:p, space :::p}}}}"
-			"$verticalGroup": "par l {seq l {space :::p, par b {comp label1::b:p:27:p, comp label2::b:p:29:p, comp textField1::b:p::p, comp textField2::b:p::p}, space u:::p, comp radioButton1:::p::p, space :::p, par l {seq l {comp radioButton2:::p::p, space :::p, comp radioButton3:::p::p}, seq l {space :p:10:p, comp label3:::p:25:p}}, space :::p, comp radioButton4:::p::p, space :::p, comp radioButton5:::p::p, space ::363:x, par b {comp button2::b:p::p, comp button1::b:p::p}, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {space :0:0:x, comp button1:::p:114:p, space u:::p, comp button2:::p:114:p, space :::p}, seq l {comp label3:::p::p, space s:::p, par l {comp radioButton2:::p::p, comp radioButton3::l:p::p, comp radioButton4::l:p::p, comp radioButton5::l:p::p, comp radioButton1::l:p::p}, space :371::x}, seq t {comp label1:::p::p, space :::p, comp textField1::::118:x, space :::p, comp label2::::132:x, space :::p, comp textField2:::p:193:p, space :p:26:p}, seq {par l {comp checkBox1:::p::p, par t:l::p {seq l {comp label5:::p::p, space s:::p, comp textField4:::::x}, seq l {comp label4:::p:35:p, space u:::p, comp textField3:::p:118:p}}, seq l {comp label6:::p::p, space :6:6:p, comp textField5:::p:106:p}, seq l {space :6:6:p, comp label7:::p::p, space :6:6:p, comp textField6:::p:94:p}}, space :0:379:x}}}}"
+			"$verticalGroup": "par l {seq l {space :::p, par b {comp label1::b:p:27:p, comp label2::b:p:29:p, comp textField1::b:p::p, comp textField2::b:p::p}, space u:::p, comp radioButton1:::p::p, space :::p, par l {seq l {comp radioButton2:::p::p, space :::p, comp radioButton3:::p::p}, seq l {space :p:10:p, comp label3:::p:25:p}}, space :::p, comp radioButton4:::p::p, space :::p, comp radioButton5:::p::p, space :p:18:p, par b {comp label4::b:p:27:p, comp textField3::b:p::p}, space :p:18:p, par b {comp label5::b:p::p, comp textField4::b:p::p}, space u:::p, par l {seq l {space :7:7:p, comp label6:::p::p}, comp textField5:::p::p}, space :18:18:p, par l {seq l {space :7:7:p, comp label7:::p::p}, comp textField6:::p::p}, space ::111:x, comp checkBox1:::p::p, space :::p, par b {comp button2::b:p::p, comp button1::b:p::p}, space :::p}}"
 		} ) {
 			name: "this"
 			"title": "Create New Student"
@@ -85,10 +85,44 @@ new FormModel {
 				name: "button2"
 				"text": "Create"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createStudent", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "createCourseHandler", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBox1"
+				"text": "Show More"
+				addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "showMoreHandler", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "GPA: "
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Year: "
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField4"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField6"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField5"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Semester: "
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Student ID: "
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 560, 590 )
+			"size": new java.awt.Dimension( 560, 550 )
 		} )
 	}
 }

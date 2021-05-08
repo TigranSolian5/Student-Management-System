@@ -2,6 +2,7 @@ package student;
 
 import course.Course;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Student {
@@ -23,6 +24,8 @@ public class Student {
         this.year = year;
         this.semester = semester;
         this.department = department;
+        this.currentCourses = new HashSet<>();
+        this.previousCourses = new HashSet<>();
     }
 
     public String getName() {
@@ -79,6 +82,14 @@ public class Student {
 
     public Set<Course> getPreviousCourses() {
         return previousCourses;
+    }
+
+    public void setCurrentCourses(Set<Course> currentCourses) {
+        this.currentCourses = currentCourses;
+    }
+
+    public void setPreviousCourses(Set<Course> previousCourses) {
+        this.previousCourses = previousCourses;
     }
 
     @Override

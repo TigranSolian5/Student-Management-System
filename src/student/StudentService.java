@@ -1,5 +1,8 @@
 package student;
 
+import course.Course;
+
+import javax.swing.*;
 import java.util.List;
 
 public class StudentService implements StudentServiceI {
@@ -14,12 +17,31 @@ public class StudentService implements StudentServiceI {
     }
 
     @Override
-    public List<Student> getAllStudents() {
-        return StudentDao.readAllStudents();
+    public DefaultListModel<Student> getAllStudents() {
+        List<Student> students = StudentDao.readAllStudents();
+        DefaultListModel<Student> demoList = new DefaultListModel<>();
+
+        students.forEach(demoList::addElement);
+        return demoList;
     }
 
     @Override
     public void deleteStudent(Student student) {
         StudentDao.removeStudent(student);
+    }
+
+    @Override
+    public void enrollInCourse(String studentId, Course course) {
+       enrollInCourseArray(new String[]{studentId}, course);
+    }
+
+    @Override
+    public void enrollInCourseArray(String[] studentIds, Course course) {
+        StudentDao.addStudentToCourseArray(studentIds, course);
+    }
+
+    @Override
+    public void finishCourse(Student student, Course course) {
+        StudentDao.removeCourseFromStudent(student, course);
     }
 }
