@@ -20,6 +20,7 @@ public class _CreateStudentFrameGUI extends JFrame {
     private final _StudentManagementGUI parentGUI;
 
     public _CreateStudentFrameGUI(_StudentManagementGUI parentGUI) {
+        this.studentService = new StudentService();
         this.parentGUI = parentGUI;
         initComponents();
     }
@@ -29,8 +30,6 @@ public class _CreateStudentFrameGUI extends JFrame {
     }
 
     private void createStudent(MouseEvent e) {
-        StudentService studentService = new StudentService();
-
         String firstName = textField1.getText();
         String lastName = textField2.getText();
         String dep = buttonGroup1.getSelection().getActionCommand();
@@ -312,6 +311,7 @@ public class _CreateStudentFrameGUI extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
+    private StudentService studentService;
     private JLabel label1;
     private JTextField textField1;
     private JLabel label2;

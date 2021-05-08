@@ -42,7 +42,6 @@ public class _StudentManagementGUI extends JFrame {
     }
 
     private void deleteStudentHandler(MouseEvent e) {
-        StudentService studentService = new StudentService();
         Student student = list1.getSelectedValue();
 
         studentService.deleteStudent(student);
